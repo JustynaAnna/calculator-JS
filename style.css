@@ -1,0 +1,99 @@
+/*,#6c54b5*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+*, *::after, *::before{
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    font-size: 25px;
+    font-weight: 500;
+    /* color:rgb(108, 84, 181); */
+    color: white;
+}
+
+body{
+    padding: 0;
+    margin: 0;
+    /* background: #27292a; */
+    background-image: linear-gradient(180deg, #505467 0, #1f3259 50%, #00154b 100%);
+}
+
+.calculator{
+    margin: 30px;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-template-columns: repeat(5, 70px);
+    grid-template-rows: minmax(120px,auto) repeat(5, 70px);
+    min-height: 100vh; /*Kalkulator nie bedzie rzylegał do górnej krawędzi*/
+  
+}
+
+
+
+.result{
+    grid-column: 1 / -1;  /*kolumna:aby wszystko miało szerokość całego wiersza musimy określić, że ma zajmować miejsce od pierwszej (1) do (/) ostatniej(-1) kolumny. Ostatnia oznaczona jako -1 bo nie wiemy ile jest ostatnich */
+    /* background-color: rgb(35, 35, 35); */
+    background-image: linear-gradient(180deg, #241c30 0, #1c162c 25%, #101035 50%, #000c35 75%, #000031 100%);
+    border: 4px solid  #202324;
+    /* border-bottom: 10px solid #3d4144; */
+    margin-bottom: 5px;
+    font-size: 50px;
+    display: flex; /*ustawiamy go na flex, aby zmieścić w nim 2 linijki w (przypadku aby przełamać bardzo długi wynik)*/
+    flex-direction: column;
+    align-items: flex-end;/*aby wyrównywać do prawej strony*/
+    justify-content: space-between;/*Aby to malutkie działanie było na górze(previous-action), a obecne działanie (current-operation)na dole*/
+    padding: 20px; /*dodajemy, aby wynik nie był przyklejony do  dolnej krawedzi,a poprzednia akcja do górnej*/
+    box-shadow: 0px 4px 25px -10px rgba(197, 120, 245, 0.9);/*Pojawia się bardzo delikatny cien, który odziela górne przyciski od górnej tablicy z wynikiem. Znajduje sie dookoła diva-result*/
+    word-wrap: break-word; /*jezeli wpiszemy np. długi ciag liczb, to bedzie traktowany jak jedno"słowo" i wyjedzie poza granice diva-poza nasz kalkulator. dlatego tzreba go złamać wrap:break*/
+    word-break: break-all;/*aby każde słowa- niezależnie co wpiszemy-zawsze przeskakiwało do 2 linijki*/   
+    border-radius: 20px;
+
+}
+
+
+.previous-action{
+    font-size: 18px;
+    font-weight: 400;
+    color:rgb(253, 253, 255); /*róznica w kolorze delikatna i przezroczystość, aby odróżniał się od obecnej akcji*/
+
+}
+
+.current-operation{
+    font-size: 35px;
+}
+button{
+    cursor: pointer;
+    border: 3px solid #202324;
+    /*    background: linear-gradient(to  bottom,#6c54b5,#8a78c5, #a99bd4,#cac3e0);*/
+    background-color: black;
+    outline: none;
+    transition: .5s all;
+}
+button:hover{
+    /* background: rgba(56, 57, 56, 0.95); */
+    background-image: linear-gradient(180deg, #241c30 0, #1c162c 25%, #101035 50%, #000c35 75%, #000031 100%);
+    border: 1px solid white;
+    transform: scale(1.1);
+
+}
+
+.col-two{
+    grid-column: span 2;
+}
+/*Jak zorbić zaokrąglenia pisząc mniej linijek kodu?*/
+.row-two{
+    grid-row: span 2;
+    border-radius: 0 0 20px 0
+}
+
+.right-radius{
+    border-radius: 0 20px 0 0;
+}
+.left-radius{
+    border-radius: 20px 0 0 0;
+}
+.bottom-radius{
+    border-radius: 0 0 0 20px;
+}
+
